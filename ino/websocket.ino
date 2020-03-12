@@ -7,10 +7,6 @@ const char* password = "";
 char path[] = "/";
 char host[] = "localhost";
 
-char messageData[255]; // 255 chars max !!
-const char* messageTpl = "%s-%d";
-int x = 0; 
-
 WebSocketClient webSocketClient;
 
 // Use WiFiClient class to create TCP connections
@@ -37,7 +33,7 @@ void setup() {
   Serial.println("");
   Serial.println("WiFi connected");  
   Serial.println("IP address: ");
-	Serial.println(WiFi.localIP());
+  Serial.println(WiFi.localIP());
   delay(5000);
   
 
@@ -68,25 +64,10 @@ void setup() {
 
 void loop() {
   String data;
- 
-    	
+      	
   if (client.connected()) {
- 
-    webSocketClient.getData(data);
     
-    if (data.length() > 0) {
-      Serial.print("Received data: ");
-      Serial.println(data);
-    }
- 		int y = x++;
-		snprintf( messageData, 255, messageTpl, "Ping", y );
-		/*Serial.println(ESP.getFreeHeap());
-		webSocketClient.sendData( messageData );	
-		Serial.println(ESP.getFreeHeap()); */
-    //webSocketClient.sendData("Ping", y); 
-    
-    
-		webSocketClient.sendData( String(  String("Ping") + String(y)  ).c_str() ); 		
+		webSocketClient.sendData( String(  ESP.getFreeHeap()  ).c_str() ); 		
  	  Serial.println(ESP.getFreeHeap());
 
  
@@ -97,8 +78,7 @@ void loop() {
  
     }
   }
-  
-  // wait to fully let the client disconnect
-  delay(3000);
+ 
+  delay(500);
   
 }
