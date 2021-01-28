@@ -17,7 +17,7 @@
   "author": "atmoner",
   "license": "CC0-1.0",
   "devDependencies": {
-    "electron": "^7.1.7"
+    "electron": "^9.4.0"
   },
   "dependencies": {
     "chart.js": "^2.9.3",
